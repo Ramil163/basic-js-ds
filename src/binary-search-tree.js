@@ -1,4 +1,4 @@
-// const { NotImplementedError } = require("../extensions/index.js");
+const { NotImplementedError } = require("../extensions/index.js");
 
 const { Node } = require("../extensions/list-tree.js");
 
@@ -8,10 +8,19 @@ const { Node } = require("../extensions/list-tree.js");
  */
 
 module.exports = class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
   root() {
-    // if (!node) {
-    return null;
-    // }
+    // let node = this.data;
+
+    this.root = rootNode(this.root);
+
+    function rootNode(node, data) {
+      if (!node) {
+        return null;
+      }
+    }
   }
 
   add(data) {
@@ -54,7 +63,7 @@ module.exports = class BinarySearchTree {
   find(data) {}
 
   remove(data) {
-    this.root = removeNode(this.root, value);
+    this.root = removeNode(this.root, data);
 
     function removeNode(node, data) {
       if (!node) {
@@ -93,7 +102,25 @@ module.exports = class BinarySearchTree {
     }
   }
 
-  min() {}
+  min() {
+    if (!this.root) {
+      return;
+    }
+    let node = this.root;
+    while (node.left) {
+      node = node.left;
+    }
+    return node.data;
+  }
 
-  max() {}
+  max() {
+    if (!this.root) {
+      return;
+    }
+    let node = this.root;
+    while (node.right) {
+      node = node.right;
+    }
+    return node.data;
+  }
 };
