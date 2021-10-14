@@ -9,22 +9,29 @@ const { Node } = require("../extensions/list-tree.js");
 
 module.exports = class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.rootOfTree = null;
+    this.rootOfTree = null;
   }
   root() {
-    // let node = this.data;
-
-    this.root = rootNode(this.root);
-
-    function rootNode(node, data) {
-      if (!node) {
-        return null;
-      }
+    if (!this.rootOfTree) {
+      return null;
+    } else {
+      return this.rootOfTree;
     }
+    // let node = this.data;
+    // this.root = rootNode(this.root);
+    // function rootNode(node, data) {
+    //   if (!this.root) {
+    //     return null;
+    //   } else {
+    //     let node = this.root;
+    //     // this.root = node.data;
+    //     return this.root.data;
+    //   }
+    // }
   }
-
   add(data) {
-    this.root = addIn(this.root, data);
+    this.rootOfTree = addIn(this.rootOfTree, data);
 
     function addIn(node, data) {
       if (!node) {
@@ -45,7 +52,7 @@ module.exports = class BinarySearchTree {
   }
 
   has(data) {
-    return searchIn(this.root, data);
+    return searchIn(this.rootOfTree, data);
     function searchIn(node, data) {
       if (!node) {
         return false;
@@ -63,7 +70,7 @@ module.exports = class BinarySearchTree {
   find(data) {}
 
   remove(data) {
-    this.root = removeNode(this.root, data);
+    this.rootOfTree = removeNode(this.rootOfTree, data);
 
     function removeNode(node, data) {
       if (!node) {
@@ -103,10 +110,10 @@ module.exports = class BinarySearchTree {
   }
 
   min() {
-    if (!this.root) {
+    if (!this.rootOfTree) {
       return;
     }
-    let node = this.root;
+    let node = this.rootOfTree;
     while (node.left) {
       node = node.left;
     }
@@ -114,10 +121,10 @@ module.exports = class BinarySearchTree {
   }
 
   max() {
-    if (!this.root) {
+    if (!this.rootOfTree) {
       return;
     }
-    let node = this.root;
+    let node = this.rootOfTree;
     while (node.right) {
       node = node.right;
     }
